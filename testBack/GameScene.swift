@@ -9,34 +9,32 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    
+    func setupCircs() {
+        for numyea in 1...5{
+            let rotateyea = SKAction.rotateByAngle(CGFloat(M_PI) / 2, duration: Double(numyea) )
+            let foreveryea = SKAction.repeatActionForever(rotateyea)
+    let circYea = SKSpriteNode(texture: SKTexture(imageNamed: "backCirc_\(numyea)"), color: UIColor.blueColor(), size: CGSize(width: 700, height: 700))
+             circYea.position.x = self.frame.width / 2
+            circYea.position.y = self.frame.height / 2
+             circYea.zPosition = 1
+            circYea.alpha = 0.2
+            print(numyea)
+            addChild(circYea)
+            circYea.runAction(foreveryea)
+
+        }
+    }
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!"
-        myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        setupCircs()
         
-        self.addChild(myLabel)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+     
     }
    
     override func update(currentTime: CFTimeInterval) {
