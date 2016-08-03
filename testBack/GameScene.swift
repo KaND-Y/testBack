@@ -19,7 +19,7 @@ class GameScene: SKScene {
              circYea.position.x = self.frame.width / 2
             circYea.position.y = self.frame.height / 2
              circYea.zPosition = 1
-            circYea.alpha = 0.2
+            circYea.alpha = 0.1
             print(numyea)
             addChild(circYea)
             circYea.runAction(foreveryea)
